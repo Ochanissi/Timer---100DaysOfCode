@@ -7,9 +7,9 @@ let hour = 0;
 
 let start_btn = document.getElementById("start");
 let stop_btn = document.getElementById("stop");
-let reset_btn = document.getElementById("reset"
+let reset_btn = document.getElementById("reset");
+let timer_element = document.getElementById("timer");
 
-);
 
 start_btn.addEventListener("click", function() {
     timer = setInterval(TimerHandler, 1000);
@@ -26,6 +26,10 @@ stop_btn.addEventListener("click", function() {
 reset_btn.addEventListener("click", function() {
     timer = clearInterval(timer);
     reset_btn = true;
+    sec = 0;
+    min = 0;
+    hour = 0;
+    timer_element.innerHTML = "00 : 00 : 00";
 })
 
 
@@ -47,10 +51,9 @@ function TimerHandler() {
 console.log(hour + " : " + min + " : " + sec);
 
 function DisplayTime() {
-    let sec_pretty; 
-    let min_pretty; 
-    let hour_pretty; 
-    let timer_element = document.getElementById("timer");
+    let sec_pretty = sec; 
+    let min_pretty = min; 
+    let hour_pretty = hour; 
     if (sec < 10) {
         sec_pretty = "0" + sec;
     }
@@ -59,11 +62,11 @@ function DisplayTime() {
         min_pretty = "0" + min;
     }
 
-    if (min < 10) {
+    if (hour < 10) {
         hour_pretty = "0" + hour;
     }
 
-    timer_element.innerHTML = hour + " : " + min + " : " + sec;
+    timer_element.innerHTML = hour_pretty + " : " + min_pretty + " : " + sec_pretty;
 
 
 
